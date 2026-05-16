@@ -49,6 +49,49 @@ simulation-distance=10
 
     URL.revokeObjectURL(url);
   }
+  function applyPreset(
+  preset: "survival" | "creative" | "hardcore" | "friends"
+) {
+  if (preset === "survival") {
+    setServerName("Vanilla Survival Server");
+    setDifficulty("normal");
+    setGameMode("survival");
+    setMaxPlayers(20);
+    setPvp(true);
+    setHardcore(false);
+    setOnlineMode(true);
+  }
+
+  if (preset === "creative") {
+    setServerName("Creative Build Server");
+    setDifficulty("peaceful");
+    setGameMode("creative");
+    setMaxPlayers(15);
+    setPvp(false);
+    setHardcore(false);
+    setOnlineMode(true);
+  }
+
+  if (preset === "hardcore") {
+    setServerName("Hardcore Survival Server");
+    setDifficulty("hard");
+    setGameMode("survival");
+    setMaxPlayers(10);
+    setPvp(true);
+    setHardcore(true);
+    setOnlineMode(true);
+  }
+
+  if (preset === "friends") {
+    setServerName("Friends SMP Server");
+    setDifficulty("easy");
+    setGameMode("survival");
+    setMaxPlayers(8);
+    setPvp(false);
+    setHardcore(false);
+    setOnlineMode(true);
+  }
+}
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -71,6 +114,65 @@ simulation-distance=10
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
             <h2 className="mb-5 text-xl font-semibold">Server Settings</h2>
+            <div className="mb-6">
+  <p className="mb-3 text-sm font-medium text-zinc-300">
+    Quick Presets
+  </p>
+
+  <div className="grid gap-3 sm:grid-cols-2">
+    <button
+      type="button"
+      onClick={() => applyPreset("survival")}
+      className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-left transition hover:border-emerald-500 hover:bg-emerald-500/10"
+    >
+      <span className="block text-sm font-semibold text-zinc-100">
+        Vanilla Survival
+      </span>
+      <span className="mt-1 block text-xs text-zinc-400">
+        Balanced default survival setup.
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => applyPreset("creative")}
+      className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-left transition hover:border-emerald-500 hover:bg-emerald-500/10"
+    >
+      <span className="block text-sm font-semibold text-zinc-100">
+        Creative Build
+      </span>
+      <span className="mt-1 block text-xs text-zinc-400">
+        Peaceful creative server for building.
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => applyPreset("hardcore")}
+      className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-left transition hover:border-emerald-500 hover:bg-emerald-500/10"
+    >
+      <span className="block text-sm font-semibold text-zinc-100">
+        Hardcore
+      </span>
+      <span className="mt-1 block text-xs text-zinc-400">
+        Hard difficulty with hardcore mode.
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onClick={() => applyPreset("friends")}
+      className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-left transition hover:border-emerald-500 hover:bg-emerald-500/10"
+    >
+      <span className="block text-sm font-semibold text-zinc-100">
+        Friends SMP
+      </span>
+      <span className="mt-1 block text-xs text-zinc-400">
+        Small friendly survival server.
+      </span>
+    </button>
+  </div>
+</div>
 
             <div className="space-y-5">
               <label className="block">
